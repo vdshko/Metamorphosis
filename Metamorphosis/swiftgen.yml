@@ -1,0 +1,20 @@
+xcassets:
+
+  # Assets
+  - inputs:
+    - Metamorphosis/Resources/XCAssets/Assets.xcassets
+    - Metamorphosis/Resources/XCAssets/Colors.xcassets
+    outputs:
+      templatePath: Metamorphosis/Resources/SwiftGen/Stencils/xcassets-swiftui.stencil
+      output: Metamorphosis/Resources/SwiftGen/Assets.swift
+      params:
+        publicAccess: true
+
+strings:
+  - inputs:
+    - Metamorphosis/Resources/Localization/en.lproj/Localizable.strings
+    outputs:
+      output: Metamorphosis/Resources/SwiftGen/Strings.swift
+      templateName: structured-swift5
+      params:
+        publicAccess: true

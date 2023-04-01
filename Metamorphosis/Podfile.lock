@@ -1,16 +1,24 @@
 PODS:
   - DebugFrame (0.0.1)
+  - SwiftGen (6.5.1)
+  - SwiftLint (0.48.0)
 
 DEPENDENCIES:
   - DebugFrame
+  - SwiftGen (= 6.5.1)
+  - SwiftLint (= 0.48.0)
 
 SPEC REPOS:
   trunk:
     - DebugFrame
+    - SwiftGen
+    - SwiftLint
 
 SPEC CHECKSUMS:
   DebugFrame: 39f20e1bbe6150058e239b744cccf0c8bf649f86
+  SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
+  SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
 
-PODFILE CHECKSUM: 185dbe6b1c9ed353855fb58fe1152091bfbfd49b
+PODFILE CHECKSUM: 09481ac3b8e9c349d96b7baa64a6607457dc2da1
 
 COCOAPODS: 1.11.3
