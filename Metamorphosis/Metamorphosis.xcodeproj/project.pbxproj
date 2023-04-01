@@ -145,8 +145,8 @@
 		A1B4469829D8A69E000D7E26 /* SwiftGen */ = {
 			isa = PBXGroup;
 			children = (
-				A1B446A729D8A8B8000D7E26 /* Assets.swift */,
 				A1B446A229D8A730000D7E26 /* Stencils */,
+				A1B446A729D8A8B8000D7E26 /* Assets.swift */,
 				A1B446A829D8A8B8000D7E26 /* Strings.swift */,
 			);
 			path = SwiftGen;
