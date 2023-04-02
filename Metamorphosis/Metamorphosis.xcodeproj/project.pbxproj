@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		628D2BBEA3469E11891DC80F /* Pods_Metamorphosis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C49CC55B2BA54592AD6F51C4 /* Pods_Metamorphosis.framework */; };
+		A171262629DA1AB000620487 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A171262429DA1AB000620487 /* RootView.swift */; };
+		A171262729DA1AB000620487 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A171262529DA1AB000620487 /* RootViewModel.swift */; };
 		A1AAE48E29D77E9500ED9E80 /* MetamorphosisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AAE48D29D77E9500ED9E80 /* MetamorphosisApp.swift */; };
-		A1AAE49029D77E9500ED9E80 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AAE48F29D77E9500ED9E80 /* ContentView.swift */; };
 		A1AAE49229D77E9700ED9E80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1AAE49129D77E9700ED9E80 /* Assets.xcassets */; };
 		A1AAE49529D77E9700ED9E80 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1AAE49429D77E9700ED9E80 /* Preview Assets.xcassets */; };
 		A1B4469229D8A63A000D7E26 /* run-swiftgen.sh in Resources */ = {isa = PBXBuildFile; fileRef = A1B4469029D8A63A000D7E26 /* run-swiftgen.sh */; };
@@ -24,9 +25,10 @@
 /* Begin PBXFileReference section */
 		12DBB8981BFCC3E5986FB7CE /* Pods-Metamorphosis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metamorphosis.release.xcconfig"; path = "Target Support Files/Pods-Metamorphosis/Pods-Metamorphosis.release.xcconfig"; sourceTree = "<group>"; };
 		908A153B79F3EECAB77F2B08 /* Pods-Metamorphosis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metamorphosis.debug.xcconfig"; path = "Target Support Files/Pods-Metamorphosis/Pods-Metamorphosis.debug.xcconfig"; sourceTree = "<group>"; };
+		A171262429DA1AB000620487 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		A171262529DA1AB000620487 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		A1AAE48A29D77E9500ED9E80 /* Metamorphosis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metamorphosis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1AAE48D29D77E9500ED9E80 /* MetamorphosisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetamorphosisApp.swift; sourceTree = "<group>"; };
-		A1AAE48F29D77E9500ED9E80 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A1AAE49129D77E9700ED9E80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1AAE49429D77E9700ED9E80 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A1B4469029D8A63A000D7E26 /* run-swiftgen.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "run-swiftgen.sh"; sourceTree = "<group>"; };
@@ -67,6 +69,15 @@
 				12DBB8981BFCC3E5986FB7CE /* Pods-Metamorphosis.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A171262329DA1A9B00620487 /* RootView */ = {
+			isa = PBXGroup;
+			children = (
+				A171262429DA1AB000620487 /* RootView.swift */,
+				A171262529DA1AB000620487 /* RootViewModel.swift */,
+			);
+			path = RootView;
 			sourceTree = "<group>";
 		};
 		A1AAE48129D77E9400ED9E80 = {
@@ -137,7 +148,7 @@
 		A1B4469529D8A64C000D7E26 /* Flow */ = {
 			isa = PBXGroup;
 			children = (
-				A1AAE48F29D77E9500ED9E80 /* ContentView.swift */,
+				A171262329DA1A9B00620487 /* RootView */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -345,10 +356,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1AAE49029D77E9500ED9E80 /* ContentView.swift in Sources */,
 				A1AAE48E29D77E9500ED9E80 /* MetamorphosisApp.swift in Sources */,
 				A1B446AA29D8A8B8000D7E26 /* Strings.swift in Sources */,
 				A1B446A929D8A8B8000D7E26 /* Assets.swift in Sources */,
+				A171262729DA1AB000620487 /* RootViewModel.swift in Sources */,
+				A171262629DA1AB000620487 /* RootView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
