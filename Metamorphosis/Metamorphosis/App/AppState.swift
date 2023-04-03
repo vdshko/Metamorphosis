@@ -11,7 +11,7 @@ final class AppState: ObservableObject {
     
     @Published var navigationPath: NavigationPath = NavigationPath()
     
-    var shared: AppState = AppState()
+    static var shared: AppState = AppState()
     
     private init() {}
 }
