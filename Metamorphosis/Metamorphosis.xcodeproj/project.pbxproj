@@ -20,6 +20,7 @@
 		A1B446A429D8A730000D7E26 /* xcassets-swiftui.stencil in Resources */ = {isa = PBXBuildFile; fileRef = A1B446A329D8A730000D7E26 /* xcassets-swiftui.stencil */; };
 		A1B446A929D8A8B8000D7E26 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B446A729D8A8B8000D7E26 /* Assets.swift */; };
 		A1B446AA29D8A8B8000D7E26 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B446A829D8A8B8000D7E26 /* Strings.swift */; };
+		A1C29E7329DB49CC00D0069B /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C29E7229DB49CC00D0069B /* AppState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		A1B446A529D8A7DB000D7E26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1B446A729D8A8B8000D7E26 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		A1B446A829D8A8B8000D7E26 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		A1C29E7229DB49CC00D0069B /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		C49CC55B2BA54592AD6F51C4 /* Pods_Metamorphosis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Metamorphosis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -140,6 +142,7 @@
 		A1B4469429D8A642000D7E26 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				A1C29E7229DB49CC00D0069B /* AppState.swift */,
 				A1AAE48D29D77E9500ED9E80 /* MetamorphosisApp.swift */,
 			);
 			path = App;
@@ -359,6 +362,7 @@
 				A1AAE48E29D77E9500ED9E80 /* MetamorphosisApp.swift in Sources */,
 				A1B446AA29D8A8B8000D7E26 /* Strings.swift in Sources */,
 				A1B446A929D8A8B8000D7E26 /* Assets.swift in Sources */,
+				A1C29E7329DB49CC00D0069B /* AppState.swift in Sources */,
 				A171262729DA1AB000620487 /* RootViewModel.swift in Sources */,
 				A171262629DA1AB000620487 /* RootView.swift in Sources */,
 			);
