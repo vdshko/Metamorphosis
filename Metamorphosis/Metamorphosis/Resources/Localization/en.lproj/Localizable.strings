@@ -5,3 +5,22 @@
   Created by Vladyslav Shkodych on 01.04.2023.
   
 */
+
+// Mark: - Common
+
+"common.comingSoon" = "Coming soon!";
+
+// MARK: - Units
+
+"units.area" = "Area";
+"units.currency" = "Currency";
+"units.data" = "Data";
+"units.angles" = "Angles";
+"units.length" = "Length";
+"units.power" = "Power";
+"units.pressure" = "Pressure";
+"units.speed" = "Speed";
+"units.temperature" = "Temperature";
+"units.time" = "Time";
+"units.volume" = "Volume";
+"units.weight" = "Weight";
