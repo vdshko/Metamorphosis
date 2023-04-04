@@ -20,21 +20,41 @@ struct RootView: View {
     var body: some View {
         NavigationStack(path: $viewModel.navigationPath) {
             content
-                .navigationDestination(for: String.self) { value in
-                    Text("String = \(value)")
+                .navigationDestination(for: NavigationType.self) { type in
+                    switch type {
+                    case .area:
+                        Text("Area")
+                    default:
+                        Text(L10n.Common.comingSoon)
+                    }
                 }
         }
     }
     
     var content: some View {
-        ScrollView {
-            LazyVGrid(columns: gridColumns) {
-                ForEach(viewModel.units, id: \.self) { [weak viewModel] unit in
-                    Text(unit.rawValue)
-                        .onTapGesture {
-                            viewModel?.navigationPath.append(unit.rawValue)
-                        }
-                }
+        LazyVGrid(columns: gridColumns, spacing: 50.0) {
+            ForEach(viewModel.units, id: \.self) { unit in
+                cell(for: unit)
+            }
+        }
+    }
+    
+    func cell(for unit: Unit) -> some View {
+        Button { [weak viewModel] in
+            viewModel?.handleCellTap(for: unit)
+        } label: {
+            VStack(spacing: 10.0) {
+                unit.thumbnail.image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundColor(Asset.Colors.Base.white)
+                    .frame(width: 40.0, height: 40.0)
+                    .padding(.horizontal, 30.0)
+                    .padding(.vertical, 15.0)
+                    .background(.green)
+                    .cornerRadius(8.0)
+                Text(unit.title)
+                    .foregroundColor(Asset.Colors.Base.black)
             }
         }
     }
