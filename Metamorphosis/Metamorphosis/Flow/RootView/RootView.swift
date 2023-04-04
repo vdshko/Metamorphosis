@@ -28,16 +28,14 @@ struct RootView: View {
     }
     
     private var content: some View {
-        ZStack {
-            Asset.Colors.Background.main.color.ignoresSafeArea()
-            ScrollView {
-                LazyVGrid(columns: Array(repeating: GridItem(), count: 3)) {
-                    ForEach(viewModel.units, id: \.self) { unit in
-                        cell(for: unit)
-                    }
+        ScrollView {
+            LazyVGrid(columns: Array(repeating: GridItem(), count: 3)) {
+                ForEach(viewModel.units, id: \.self) { unit in
+                    cell(for: unit)
                 }
             }
         }
+        .background(.main)
     }
     
     private func cell(for unit: Unit) -> some View {
