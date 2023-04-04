@@ -16,6 +16,13 @@ public enum L10n {
     public static let comingSoon = L10n.tr("Localizable", "common.comingSoon")
   }
 
+  public enum Root {
+    public enum Navigation {
+      /// Units
+      public static let title = L10n.tr("Localizable", "root.navigation.title")
+    }
+  }
+
   public enum Units {
     /// Angles
     public static let angles = L10n.tr("Localizable", "units.angles")

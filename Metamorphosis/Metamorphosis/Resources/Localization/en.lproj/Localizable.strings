@@ -24,3 +24,7 @@
 "units.time" = "Time";
 "units.volume" = "Volume";
 "units.weight" = "Weight";
+
+// Mark: - Root
+
+"root.navigation.title" = "Units";
