@@ -31,6 +31,7 @@ public enum Asset {
   public enum Colors {
     public enum Background {
       public static let main = ColorAsset(name: "Background/main")
+      public static let secondary = ColorAsset(name: "Background/secondary")
     }
     public enum Base {
       public static let black = ColorAsset(name: "Base/black")
