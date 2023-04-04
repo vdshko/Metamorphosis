@@ -11,15 +11,11 @@ struct RootView: View {
     
     @StateObject var viewModel: RootViewModel = RootViewModel()
     
-    private let gridColumns: [GridItem] = [
-        GridItem(),
-        GridItem(),
-        GridItem()
-    ]
-    
     var body: some View {
         NavigationStack(path: $viewModel.navigationPath) {
             content
+                .navigationTitle(L10n.Root.Navigation.title)
+                .navigationBarTitleDisplayMode(.large)
                 .navigationDestination(for: NavigationType.self) { type in
                     switch type {
                     default:
@@ -27,20 +23,24 @@ struct RootView: View {
                     }
                 }
         }
+        .accentColor(Asset.Colors.Base.white)
+        .navigationBarTitleTextColor(Asset.Colors.Base.white)
     }
     
-    var content: some View {
+    private var content: some View {
         ZStack {
             Asset.Colors.Background.main.color.ignoresSafeArea()
-            LazyVGrid(columns: gridColumns, spacing: 60.0) {
-                ForEach(viewModel.units, id: \.self) { unit in
-                    cell(for: unit)
+            ScrollView {
+                LazyVGrid(columns: Array(repeating: GridItem(), count: 3)) {
+                    ForEach(viewModel.units, id: \.self) { unit in
+                        cell(for: unit)
+                    }
                 }
             }
         }
     }
     
-    func cell(for unit: Unit) -> some View {
+    private func cell(for unit: Unit) -> some View {
         Button { [weak viewModel] in
             viewModel?.handleCellTap(for: unit)
         } label: {
@@ -57,6 +57,8 @@ struct RootView: View {
                 Text(unit.title)
                     .foregroundColor(Asset.Colors.Base.white)
             }
+            .padding(.vertical, 30.0)
+            .padding(.horizontal, 5.0)
         }
     }
 }
