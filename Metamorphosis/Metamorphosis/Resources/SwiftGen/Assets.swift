@@ -29,9 +29,26 @@ public enum Asset {
     }
   }
   public enum Colors {
+    public enum Background {
+      public static let main = ColorAsset(name: "Background/main")
+    }
     public enum Base {
       public static let black = ColorAsset(name: "Base/black")
       public static let white = ColorAsset(name: "Base/white")
+    }
+    public enum Units {
+      public static let angles = ColorAsset(name: "Units/angles")
+      public static let area = ColorAsset(name: "Units/area")
+      public static let currency = ColorAsset(name: "Units/currency")
+      public static let data = ColorAsset(name: "Units/data")
+      public static let length = ColorAsset(name: "Units/length")
+      public static let power = ColorAsset(name: "Units/power")
+      public static let pressure = ColorAsset(name: "Units/pressure")
+      public static let speed = ColorAsset(name: "Units/speed")
+      public static let temperature = ColorAsset(name: "Units/temperature")
+      public static let time = ColorAsset(name: "Units/time")
+      public static let volume = ColorAsset(name: "Units/volume")
+      public static let weight = ColorAsset(name: "Units/weight")
     }
   }
 }

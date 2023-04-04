@@ -22,8 +22,6 @@ struct RootView: View {
             content
                 .navigationDestination(for: NavigationType.self) { type in
                     switch type {
-                    case .area:
-                        Text("Area")
                     default:
                         Text(L10n.Common.comingSoon)
                     }
@@ -32,9 +30,12 @@ struct RootView: View {
     }
     
     var content: some View {
-        LazyVGrid(columns: gridColumns, spacing: 50.0) {
-            ForEach(viewModel.units, id: \.self) { unit in
-                cell(for: unit)
+        ZStack {
+            Asset.Colors.Background.main.color.ignoresSafeArea()
+            LazyVGrid(columns: gridColumns, spacing: 60.0) {
+                ForEach(viewModel.units, id: \.self) { unit in
+                    cell(for: unit)
+                }
             }
         }
     }
@@ -49,12 +50,12 @@ struct RootView: View {
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(Asset.Colors.Base.white)
                     .frame(width: 40.0, height: 40.0)
-                    .padding(.horizontal, 30.0)
-                    .padding(.vertical, 15.0)
-                    .background(.green)
+                    .padding(.horizontal, 20.0)
+                    .padding(.vertical, 14.0)
+                    .background(unit.color.color)
                     .cornerRadius(8.0)
                 Text(unit.title)
-                    .foregroundColor(Asset.Colors.Base.black)
+                    .foregroundColor(Asset.Colors.Base.white)
             }
         }
     }
