@@ -11,5 +11,6 @@ struct Unit: Hashable {
     
     let title: String
     let thumbnail: ImageAsset
+    let color: ColorAsset
     let navigationType: NavigationType
 }
