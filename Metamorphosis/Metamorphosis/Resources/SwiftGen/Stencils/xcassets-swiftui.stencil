@@ -73,7 +73,7 @@ import UIKit
 
 // MARK: - Implementation Details
 
-{{accessModifier}} struct {{colorType}} {
+{{accessModifier}} struct {{colorType}}: Hashable {
   fileprivate let name: String
 
   {{accessModifier}} var color: Color {
@@ -115,7 +115,7 @@ extension Text {
     }
 }
 
-{{accessModifier}} struct {{imageType}} {
+{{accessModifier}} struct {{imageType}}: Hashable {
   fileprivate let name: String
 
   {{accessModifier}} var image: Image {
