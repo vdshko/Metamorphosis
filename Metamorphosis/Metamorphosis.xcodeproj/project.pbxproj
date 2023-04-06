@@ -25,6 +25,8 @@
 		A1B446AA29D8A8B8000D7E26 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B446A829D8A8B8000D7E26 /* Strings.swift */; };
 		A1C29E7629DB4BC900D0069B /* NavigationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C29E7529DB4BC900D0069B /* NavigationType.swift */; };
 		A1C7200B29DB50B9003BDBA2 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C29E7229DB49CC00D0069B /* AppState.swift */; };
+		A1DA6B5D29DF72CD008A5E66 /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DA6B5B29DF72CD008A5E66 /* WeightView.swift */; };
+		A1DA6B5E29DF72CD008A5E66 /* WeightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DA6B5C29DF72CD008A5E66 /* WeightViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		A1B446A829D8A8B8000D7E26 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		A1C29E7229DB49CC00D0069B /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A1C29E7529DB4BC900D0069B /* NavigationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationType.swift; sourceTree = "<group>"; };
+		A1DA6B5B29DF72CD008A5E66 /* WeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
+		A1DA6B5C29DF72CD008A5E66 /* WeightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightViewModel.swift; sourceTree = "<group>"; };
 		C49CC55B2BA54592AD6F51C4 /* Pods_Metamorphosis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Metamorphosis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -121,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				A1B4469429D8A642000D7E26 /* App */,
+				A1C29E7429DB4BB000D0069B /* Common */,
 				A1B4469529D8A64C000D7E26 /* Flow */,
 				A1B4468E29D8A61B000D7E26 /* Resources */,
 				A1B4468F29D8A63A000D7E26 /* scripts */,
@@ -168,8 +173,8 @@
 		A1B4469529D8A64C000D7E26 /* Flow */ = {
 			isa = PBXGroup;
 			children = (
-				A1C29E7429DB4BB000D0069B /* Common */,
 				A171262329DA1A9B00620487 /* RootView */,
+				A1DA6B5A29DF7279008A5E66 /* WeightView */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -228,6 +233,15 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		A1DA6B5A29DF7279008A5E66 /* WeightView */ = {
+			isa = PBXGroup;
+			children = (
+				A1DA6B5B29DF72CD008A5E66 /* WeightView.swift */,
+				A1DA6B5C29DF72CD008A5E66 /* WeightViewModel.swift */,
+			);
+			path = WeightView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -241,7 +255,7 @@
 				A1AAE48629D77E9500ED9E80 /* Sources */,
 				A1AAE48729D77E9500ED9E80 /* Frameworks */,
 				A1AAE48829D77E9500ED9E80 /* Resources */,
-				CDB343195B60948F733E14A5 /* [CP] Embed Pods Frameworks */,
+				73DF22FBC8C5A7E4BD3E2446 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -325,6 +339,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		73DF22FBC8C5A7E4BD3E2446 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Metamorphosis/Pods-Metamorphosis-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Metamorphosis/Pods-Metamorphosis-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Metamorphosis/Pods-Metamorphosis-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A1B4469629D8A66A000D7E26 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -363,23 +394,6 @@
 			shellPath = /bin/sh;
 			shellScript = "$SRCROOT/scripts/run-swiftlint.sh\n";
 		};
-		CDB343195B60948F733E14A5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Metamorphosis/Pods-Metamorphosis-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Metamorphosis/Pods-Metamorphosis-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Metamorphosis/Pods-Metamorphosis-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -392,8 +406,10 @@
 				A1C7200B29DB50B9003BDBA2 /* AppState.swift in Sources */,
 				A1B446A929D8A8B8000D7E26 /* Assets.swift in Sources */,
 				A1353C0B29DCE72900A56D55 /* View+NavigationBarColor.swift in Sources */,
+				A1DA6B5D29DF72CD008A5E66 /* WeightView.swift in Sources */,
 				A1C29E7629DB4BC900D0069B /* NavigationType.swift in Sources */,
 				A1353C0D29DCE96C00A56D55 /* View+Backgrounds.swift in Sources */,
+				A1DA6B5E29DF72CD008A5E66 /* WeightViewModel.swift in Sources */,
 				A1451B1B29DC1A4A0076DBCC /* Unit.swift in Sources */,
 				A171262729DA1AB000620487 /* RootViewModel.swift in Sources */,
 				A171262629DA1AB000620487 /* RootView.swift in Sources */,

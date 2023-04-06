@@ -18,8 +18,8 @@ struct RootView: View {
                 .navigationBarTitleDisplayMode(.large)
                 .navigationDestination(for: NavigationType.self) { type in
                     switch type {
-                    default:
-                        Text(L10n.Common.comingSoon)
+                    case .weight: WeightView()
+                    default: Text(L10n.Common.comingSoon)
                     }
                 }
         }
