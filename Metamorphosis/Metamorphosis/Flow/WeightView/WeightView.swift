@@ -10,22 +10,40 @@ import SwiftUI
 struct WeightView: View {
     
     @StateObject var viewModel: WeightViewModel = WeightViewModel()
-    @FocusState private var isInputFieldFocused: Bool
     
     var body: some View {
         VStack {
-            inputView
+            topContainer
             conversionsList
+                .allowsHitTesting(!isExpanded)
+            Spacer(minLength: 0.0)
         }
         .background(.main)
         .navigationTitle("Weight")
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    private var inputView: some View {
+    // MARK: - topContainer
+    
+    @State private var inputViewFrame: CGRect = .zero
+    @State private var isExpanded: Bool = false
+    @FocusState private var isInputFieldFocused: Bool
+    
+    private var topContainer: some View {
+        HStack {
+            input
+            selector
+                .frame(width: inputViewFrame.width / Constants.dividerTopContainer)
+        }
+        .padding(Constants.paddingTopContainer)
+        .reader(frame: $inputViewFrame)
+    }
+    
+    private var input: some View {
         HStack {
             Text("Input:")
                 .foregroundColor(Asset.Colors.Base.white)
+            
             TextField(
                 "",
                 value: $viewModel.inputValue,
@@ -42,33 +60,84 @@ struct WeightView: View {
                     .strokeBorder(style: StrokeStyle(lineWidth: 1.0))
                     .foregroundColor(.white)
             )
-            
-            DisclosureGroup("", isExpanded: $isExpanded) {
-                VStack {
-                    ForEach(1...10, id: \.self) {
-                        Text("\($0)")
+        }
+    }
+    
+    private var selector: some View {
+        Button {
+            toggleMeasurement()
+        } label: {
+            HStack {
+                Text("\(viewModel.selectedMeasurement)")
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .rotationEffect(.degrees(isExpanded ? 90.0 : 0.0))
+            }
+            .foregroundColor(Asset.Colors.Base.black)
+            .padding(.horizontal, 10.0)
+            .frame(width: inputViewFrame.width / Constants.dividerTopContainer)
+            .padding(.vertical, 10.0)
+            .background(Asset.Colors.Base.white.color)
+            .cornerRadius(24.0)
+        }
+        .overlay(alignment: .top) {
+            selectorList
+        }
+    }
+    
+    private var selectorList: some View {
+        DisclosureGroup("", isExpanded: $isExpanded) {
+            ScrollView {
+                LazyVStack(spacing: 0.0) {
+                    ForEach(1...100, id: \.self) { num in
+                        HStack {
+                            Text("\(num)")
+                            Spacer()
+                        }
+                        .frame(height: 50.0)
+                        .background(.secondary)
+                        .onTapGesture { [weak viewModel] in
+                            viewModel?.selectedMeasurement = num
+                            toggleMeasurement()
+                        }
                     }
                 }
             }
-            
-            Button {
-                isInputFieldFocused = false
-            } label: {
-                Text("Unfocused")
-                    .padding(10.0)
-                    .background(.secondary)
-                    .cornerRadius(24.0)
-            }
+            .padding(.horizontal, 10.0)
+            .background(.secondary)
+            .frame(maxHeight: UIScreen.main.bounds.height / 2)
         }
-        .padding(10.0)
+        .cornerRadius(24.0)
+        .buttonStyle(HiddenButtonStyle())
+        .offset(y: inputViewFrame.height - Constants.paddingTopContainer)
     }
-    @State private var isExpanded: Bool = false
+    
+    private func toggleMeasurement() {
+        withAnimation {
+            isInputFieldFocused = false
+            isExpanded.toggle()
+        }
+    }
+    
+    // MARK: - conversionsList
+    
     private var conversionsList: some View {
         List {
-            Text("start")
-                .listRowBackground(EmptyView().background(.main))
+            ForEach(1...10, id: \.self) {
+                Text("Measurement \($0)")
+            }
+            .listRowBackground(EmptyView().background(.main))
         }
         .listStyle(.plain)
+    }
+}
+
+private extension WeightView {
+    
+    enum Constants {
+        
+        static let paddingTopContainer: CGFloat = 10.0
+        static let dividerTopContainer: CGFloat = 3.0
     }
 }
 
