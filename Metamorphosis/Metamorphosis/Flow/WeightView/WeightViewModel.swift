@@ -12,6 +12,7 @@ extension WeightView {
     final class WeightViewModel: ObservableObject {
         
         @Published var inputValue: Double?
+        @Published var selectedMeasurement: Int = 1
         
         init() {
             setupBinding()

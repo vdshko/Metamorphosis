@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		628D2BBEA3469E11891DC80F /* Pods_Metamorphosis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C49CC55B2BA54592AD6F51C4 /* Pods_Metamorphosis.framework */; };
+		A10B43BB29E2F2630029A609 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10B43BA29E2F2630029A609 /* ButtonStyles.swift */; };
+		A10B43BD29E311780029A609 /* FrameReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10B43BC29E311780029A609 /* FrameReader.swift */; };
 		A1353C0B29DCE72900A56D55 /* View+NavigationBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1353C0A29DCE72900A56D55 /* View+NavigationBarColor.swift */; };
 		A1353C0D29DCE96C00A56D55 /* View+Backgrounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1353C0C29DCE96C00A56D55 /* View+Backgrounds.swift */; };
 		A1451B1B29DC1A4A0076DBCC /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1451B1A29DC1A4A0076DBCC /* Unit.swift */; };
@@ -32,6 +34,8 @@
 /* Begin PBXFileReference section */
 		12DBB8981BFCC3E5986FB7CE /* Pods-Metamorphosis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metamorphosis.release.xcconfig"; path = "Target Support Files/Pods-Metamorphosis/Pods-Metamorphosis.release.xcconfig"; sourceTree = "<group>"; };
 		908A153B79F3EECAB77F2B08 /* Pods-Metamorphosis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metamorphosis.debug.xcconfig"; path = "Target Support Files/Pods-Metamorphosis/Pods-Metamorphosis.debug.xcconfig"; sourceTree = "<group>"; };
+		A10B43BA29E2F2630029A609 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		A10B43BC29E311780029A609 /* FrameReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameReader.swift; sourceTree = "<group>"; };
 		A1353C0A29DCE72900A56D55 /* View+NavigationBarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+NavigationBarColor.swift"; sourceTree = "<group>"; };
 		A1353C0C29DCE96C00A56D55 /* View+Backgrounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Backgrounds.swift"; sourceTree = "<group>"; };
 		A1451B1A29DC1A4A0076DBCC /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
@@ -83,6 +87,24 @@
 				12DBB8981BFCC3E5986FB7CE /* Pods-Metamorphosis.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A10B43BE29E31D690029A609 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A1C29E7529DB4BC900D0069B /* NavigationType.swift */,
+				A1451B1A29DC1A4A0076DBCC /* Unit.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A10B43C129E31D830029A609 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A10B43BA29E2F2630029A609 /* ButtonStyles.swift */,
+				A10B43BC29E311780029A609 /* FrameReader.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		A1353C0929DCE71100A56D55 /* Extensions */ = {
@@ -227,8 +249,8 @@
 			isa = PBXGroup;
 			children = (
 				A1353C0929DCE71100A56D55 /* Extensions */,
-				A1C29E7529DB4BC900D0069B /* NavigationType.swift */,
-				A1451B1A29DC1A4A0076DBCC /* Unit.swift */,
+				A10B43BE29E31D690029A609 /* Models */,
+				A10B43C129E31D830029A609 /* Views */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -401,6 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A10B43BB29E2F2630029A609 /* ButtonStyles.swift in Sources */,
 				A1AAE48E29D77E9500ED9E80 /* MetamorphosisApp.swift in Sources */,
 				A1B446AA29D8A8B8000D7E26 /* Strings.swift in Sources */,
 				A1C7200B29DB50B9003BDBA2 /* AppState.swift in Sources */,
@@ -410,6 +433,7 @@
 				A1C29E7629DB4BC900D0069B /* NavigationType.swift in Sources */,
 				A1353C0D29DCE96C00A56D55 /* View+Backgrounds.swift in Sources */,
 				A1DA6B5E29DF72CD008A5E66 /* WeightViewModel.swift in Sources */,
+				A10B43BD29E311780029A609 /* FrameReader.swift in Sources */,
 				A1451B1B29DC1A4A0076DBCC /* Unit.swift in Sources */,
 				A171262729DA1AB000620487 /* RootViewModel.swift in Sources */,
 				A171262629DA1AB000620487 /* RootView.swift in Sources */,
