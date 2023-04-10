@@ -41,12 +41,30 @@ extension WeightView {
 private extension WeightView.WeightViewModel {
     
     func setupBinding() {
-        $selectedMeasurement
-            .map { selected in
-                return WeightView.WeightMeasurementType.allCases
-                    .filter { $0 != selected }
-                    .map { return WeightView.WeightMeasurement(value: 0.0, type: $0) }
+        $inputValue
+            .combineLatest($selectedMeasurement)
+            .removeDuplicates(by: ==)
+            .map { [weak self] value, type in
+                self?.conversionList(for: value, and: type) ?? []
             }
             .assign(to: &$selectableMeasurements)
+    }
+    
+    func conversionList(for value: Double?, and selectedType: WeightView.WeightMeasurementType) -> [WeightView.WeightMeasurement] {
+        return WeightView.WeightMeasurementType.allCases
+            .compactMap { type in
+                switch type {
+                case selectedType: return nil
+                case .mg: break // Adapter_mg(from: selectedType).value
+                case .cg: break // Adapter_cg(from: selectedType).value
+                case .dg: break // Adapter_dg(from: selectedType).value
+                case .g: break // Adapter_g(from: selectedType).value
+                case .dag: break // Adapter_dag(from: selectedType).value
+                case .hg: break // Adapter_hg(from: selectedType).value
+                case .kg: break // Adapter_kg(from: selectedType).value
+                case .t: break // Adapter_t(from: selectedType).value
+                }
+                return WeightView.WeightMeasurement(value: 0.0, type: type)
+            }
     }
 }
