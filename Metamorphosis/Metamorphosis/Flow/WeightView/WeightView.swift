@@ -68,7 +68,7 @@ struct WeightView: View {
             toggleMeasurement()
         } label: {
             HStack {
-                Text("\(viewModel.selectedMeasurement)")
+                Text(viewModel.selectedMeasurement.rawValue)
                 Spacer()
                 Image(systemName: "chevron.right")
                     .rotationEffect(.degrees(isExpanded ? 90.0 : 0.0))
@@ -86,18 +86,18 @@ struct WeightView: View {
     }
     
     private var selectorList: some View {
-        DisclosureGroup("", isExpanded: $isExpanded) {
+        DisclosureGroup("", isExpanded: $isExpanded) { [weak viewModel] in
             ScrollView {
                 LazyVStack(spacing: 0.0) {
-                    ForEach(1...100, id: \.self) { num in
+                    ForEach(viewModel?.selectableMeasurements ?? [], id: \.self) { measurement in
                         HStack {
-                            Text("\(num)")
+                            Text(measurement.rawValue)
                             Spacer()
                         }
                         .frame(height: 50.0)
                         .background(.secondary)
                         .onTapGesture { [weak viewModel] in
-                            viewModel?.selectedMeasurement = num
+                            viewModel?.selectedMeasurement = measurement
                             toggleMeasurement()
                         }
                     }
@@ -123,23 +123,30 @@ struct WeightView: View {
     
     private var conversionsList: some View {
         List {
-            ForEach(1...10, id: \.self) { num in
+            ForEach(viewModel.selectableMeasurements, id: \.self) { measurement in
                 HStack {
                     Spacer(minLength: 0.0)
                     Text("Measurement")
                         .padding(.horizontal, 10.0)
-                    Text("\(num)")
+                    Text(measurement.rawValue)
                         .padding(.horizontal, 10.0)
                         .frame(width: inputViewFrame.width / Constants.dividerTopContainer, alignment: .leading)
                 }
                 .padding(.horizontal, Constants.paddingTopContainer)
                 .frame(height: 50.0)
+                #warning("Made copy result value on long tap")
             }
             .listRowBackground(EmptyView().background(.main))
             .listRowInsets(EdgeInsets())
             .listRowSeparator(.hidden)
         }
         .listStyle(.plain)
+        .onTapGesture {
+            withAnimation {
+                isInputFieldFocused = false
+                isExpanded = false
+            }
+        }
     }
 }
 
