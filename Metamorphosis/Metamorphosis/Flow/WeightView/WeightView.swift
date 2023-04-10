@@ -123,10 +123,20 @@ struct WeightView: View {
     
     private var conversionsList: some View {
         List {
-            ForEach(1...10, id: \.self) {
-                Text("Measurement \($0)")
+            ForEach(1...10, id: \.self) { num in
+                HStack {
+                    Spacer(minLength: 0.0)
+                    Text("Measurement")
+                        .padding(.horizontal, 20.0)
+                    Text("\(num)")
+                        .frame(width: inputViewFrame.width / Constants.dividerTopContainer, alignment: .leading)
+                        .padding(.horizontal, -10.0)
+                }
+                .padding(.horizontal, Constants.paddingTopContainer)
+                .frame(height: 50.0)
             }
             .listRowBackground(EmptyView().background(.main))
+            .listRowInsets(EdgeInsets())
         }
         .listStyle(.plain)
     }
