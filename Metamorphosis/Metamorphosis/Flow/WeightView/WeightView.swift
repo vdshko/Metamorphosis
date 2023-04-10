@@ -30,8 +30,8 @@ struct WeightView: View {
     
     private var topContainer: some View {
         HStack {
-            input
-            selector
+            inputView
+            selectorView
                 .frame(width: inputViewFrame.width / Constants.dividerTopContainer)
         }
         .padding(Constants.paddingTopContainer)
@@ -39,7 +39,7 @@ struct WeightView: View {
         .zIndex(1)
     }
     
-    private var input: some View {
+    private var inputView: some View {
         HStack {
             Text("Input:")
                 .foregroundColor(Asset.Colors.Base.white)
@@ -63,7 +63,7 @@ struct WeightView: View {
         }
     }
     
-    private var selector: some View {
+    private var selectorView: some View {
         Button {
             toggleMeasurement()
         } label: {
@@ -89,17 +89,8 @@ struct WeightView: View {
         DisclosureGroup("", isExpanded: $isExpanded) { [weak viewModel] in
             ScrollView {
                 LazyVStack(spacing: 0.0) {
-                    ForEach(viewModel?.selectableMeasurements ?? [], id: \.self) { measurement in
-                        HStack {
-                            Text(measurement.rawValue)
-                            Spacer()
-                        }
-                        .frame(height: 50.0)
-                        .background(.secondary)
-                        .onTapGesture { [weak viewModel] in
-                            viewModel?.selectedMeasurement = measurement
-                            toggleMeasurement()
-                        }
+                    ForEach(viewModel?.selectableMeasurements ?? [], id: \.self) {
+                        selectorListCell(measurement: $0)
                     }
                 }
             }
@@ -110,6 +101,19 @@ struct WeightView: View {
         .cornerRadius(24.0)
         .buttonStyle(HiddenButtonStyle())
         .offset(y: inputViewFrame.height - Constants.paddingTopContainer)
+    }
+    
+    private func selectorListCell(measurement: WeightMeasurement) -> some View {
+        HStack {
+            Text(measurement.type.rawValue)
+            Spacer()
+        }
+        .frame(height: 50.0)
+        .background(.secondary)
+        .onTapGesture { [weak viewModel] in
+            viewModel?.selectedMeasurement = measurement.type
+            toggleMeasurement()
+        }
     }
     
     private func toggleMeasurement() {
@@ -123,18 +127,8 @@ struct WeightView: View {
     
     private var conversionsList: some View {
         List {
-            ForEach(viewModel.selectableMeasurements, id: \.self) { measurement in
-                HStack {
-                    Spacer(minLength: 0.0)
-                    Text("Measurement")
-                        .padding(.horizontal, 10.0)
-                    Text(measurement.rawValue)
-                        .padding(.horizontal, 10.0)
-                        .frame(width: inputViewFrame.width / Constants.dividerTopContainer, alignment: .leading)
-                }
-                .padding(.horizontal, Constants.paddingTopContainer)
-                .frame(height: 50.0)
-                #warning("Made copy result value on long tap")
+            ForEach(viewModel.selectableMeasurements, id: \.self) {
+                conversionListCell(measurement: $0)
             }
             .listRowBackground(EmptyView().background(.main))
             .listRowInsets(EdgeInsets())
@@ -147,6 +141,23 @@ struct WeightView: View {
                 isExpanded = false
             }
         }
+    }
+    
+    private func conversionListCell(measurement: WeightMeasurement) -> some View {
+        HStack {
+            Spacer(minLength: 0.0)
+            Text(String(format: "%.5f", measurement.value))
+                .lineLimit(1)
+                .padding(.horizontal, 10.0)
+                .onLongPressGesture { [weak viewModel] in
+                    viewModel?.handleLongPress(for: measurement)
+                }
+            Text(measurement.type.rawValue)
+                .padding(.horizontal, 10.0)
+                .frame(width: inputViewFrame.width / Constants.dividerTopContainer, alignment: .leading)
+        }
+        .padding(.horizontal, Constants.paddingTopContainer)
+        .frame(height: 50.0)
     }
 }
 
