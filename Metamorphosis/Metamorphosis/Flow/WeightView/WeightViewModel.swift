@@ -9,7 +9,13 @@ import SwiftUI
 
 extension WeightView {
     
-    enum WeightMeasurements: String, CaseIterable {
+    struct WeightMeasurement: Hashable {
+        
+        let value: Double
+        let type: WeightMeasurementType
+    }
+    
+    enum WeightMeasurementType: String, CaseIterable {
         
         case mg, cg, dg
         case g, dag, hg
@@ -19,11 +25,15 @@ extension WeightView {
     final class WeightViewModel: ObservableObject {
         
         @Published var inputValue: Double?
-        @Published var selectedMeasurement: WeightMeasurements = .kg
-        @Published var selectableMeasurements: [WeightMeasurements] = WeightMeasurements.allCases
+        @Published var selectedMeasurement: WeightMeasurementType = .kg
+        @Published var selectableMeasurements: [WeightMeasurement] = []
         
         init() {
             setupBinding()
+        }
+        
+        func handleLongPress(for measurement: WeightView.WeightMeasurement) {
+            UIPasteboard.general.string = String(measurement.value)
         }
     }
 }
@@ -32,8 +42,10 @@ private extension WeightView.WeightViewModel {
     
     func setupBinding() {
         $selectedMeasurement
-            .map { measurement in
-                return WeightView.WeightMeasurements.allCases.filter { $0 != measurement }
+            .map { selected in
+                return WeightView.WeightMeasurementType.allCases
+                    .filter { $0 != selected }
+                    .map { return WeightView.WeightMeasurement(value: 0.0, type: $0) }
             }
             .assign(to: &$selectableMeasurements)
     }
