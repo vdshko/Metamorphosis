@@ -15,7 +15,6 @@ struct WeightView: View {
         VStack {
             topContainer
             conversionsList
-                .allowsHitTesting(!isExpanded)
             Spacer(minLength: 0.0)
         }
         .background(.main)
@@ -37,6 +36,7 @@ struct WeightView: View {
         }
         .padding(Constants.paddingTopContainer)
         .reader(frame: $inputViewFrame)
+        .zIndex(1)
     }
     
     private var input: some View {
@@ -105,7 +105,7 @@ struct WeightView: View {
             }
             .padding(.horizontal, 10.0)
             .background(.secondary)
-            .frame(maxHeight: UIScreen.main.bounds.height / 2)
+            .frame(maxHeight: UIScreen.main.bounds.height / 3)
         }
         .cornerRadius(24.0)
         .buttonStyle(HiddenButtonStyle())
@@ -127,16 +127,17 @@ struct WeightView: View {
                 HStack {
                     Spacer(minLength: 0.0)
                     Text("Measurement")
-                        .padding(.horizontal, 20.0)
+                        .padding(.horizontal, 10.0)
                     Text("\(num)")
+                        .padding(.horizontal, 10.0)
                         .frame(width: inputViewFrame.width / Constants.dividerTopContainer, alignment: .leading)
-                        .padding(.horizontal, -10.0)
                 }
                 .padding(.horizontal, Constants.paddingTopContainer)
                 .frame(height: 50.0)
             }
             .listRowBackground(EmptyView().background(.main))
             .listRowInsets(EdgeInsets())
+            .listRowSeparator(.hidden)
         }
         .listStyle(.plain)
     }
