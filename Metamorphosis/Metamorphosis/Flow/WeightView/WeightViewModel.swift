@@ -17,9 +17,9 @@ extension WeightView {
     
     enum WeightMeasurementType: String, CaseIterable {
         
-        case mg, cg, dg
-        case g, dag, hg
-        case kg, t
+        case mg, cg, dg, g
+        case dag, kg, q, t
+        case oz = "Oz", pound
     }
     
     final class WeightViewModel: ObservableObject {
@@ -53,18 +53,42 @@ private extension WeightView.WeightViewModel {
     func conversionList(for value: Double?, and selectedType: WeightView.WeightMeasurementType) -> [WeightView.WeightMeasurement] {
         return WeightView.WeightMeasurementType.allCases
             .compactMap { type in
-                switch type {
-                case selectedType: return nil
-                case .mg: break // Adapter_mg(from: selectedType).value
-                case .cg: break // Adapter_cg(from: selectedType).value
-                case .dg: break // Adapter_dg(from: selectedType).value
-                case .g: break // Adapter_g(from: selectedType).value
-                case .dag: break // Adapter_dag(from: selectedType).value
-                case .hg: break // Adapter_hg(from: selectedType).value
-                case .kg: break // Adapter_kg(from: selectedType).value
-                case .t: break // Adapter_t(from: selectedType).value
-                }
-                return WeightView.WeightMeasurement(value: 0.0, type: type)
+                guard type != selectedType else { return nil }
+                return convert(from: value, and: selectedType, to: type)
             }
+    }
+    
+    func convert(from value: Double?, and fromType: WeightView.WeightMeasurementType, to toType: WeightView.WeightMeasurementType) -> WeightView.WeightMeasurement {
+        guard let value: Double = value else { return WeightView.WeightMeasurement(value: 0.0, type: toType) }
+        
+        let preResult: Double
+        switch fromType {
+        case .mg: preResult = value
+        case .cg: preResult = value * 10.0
+        case .dg: preResult = value * 100.0
+        case .g: preResult = value * 1_000.0
+        case .dag: preResult = value * 10_000.0
+        case .kg: preResult = value * 1_000_000.0
+        case .q: preResult = value * 100_000_000.0
+        case .t: preResult = value * 1_000_000_000.0
+        case .oz: preResult = value * 31_103.4768
+        case .pound: preResult = value * 453_592.0
+        }
+        
+        let result: Double
+        switch toType {
+        case .mg: result = preResult
+        case .cg: result = preResult * 0.1
+        case .dg: result = preResult * 0.01
+        case .g: result = preResult * 0.001
+        case .dag: result = preResult * 0.000_1
+        case .kg: result = preResult * 0.000_001
+        case .q: result = preResult * 0.000_000_01
+        case .t: result = preResult * 0.000_000_001
+        case .oz: result = preResult * 0.000_035_274
+        case .pound: result = preResult * 0.000_002_204_6
+        }
+        
+        return WeightView.WeightMeasurement(value: result, type: toType)
     }
 }
