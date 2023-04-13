@@ -10,8 +10,4 @@ import SwiftUI
 final class AppState: ObservableObject {
     
     @Published var navigationPath: NavigationPath = NavigationPath()
-    
-    static var shared: AppState = AppState()
-    
-    private init() {}
 }

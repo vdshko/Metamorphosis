@@ -23,8 +23,11 @@ extension WeightView {
 
         private var measurementMultiplierToMG: [String: Double] = [:]
         private var measurementMultiplierFromMG: [String: Double] = [:]
+        
+        private let diContainer: DIContainer
 
-        init() {
+        init(diContainer: DIContainer) {
+            self.diContainer = diContainer
             setupDefaultValues()
             setupBinding()
         }

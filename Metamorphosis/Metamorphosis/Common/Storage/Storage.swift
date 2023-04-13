@@ -16,6 +16,16 @@ final class Storage {
     private init() {
         userStorage = UserStorageImpl(userDefaults: UserDefaultsStorable())
     }
+    
+    // MARK: - Preview
+    
+    static var preview: Storage {
+        return Storage(userStorage: UserStorageMock())
+    }
+    
+    private init(userStorage: UserStorage) {
+        self.userStorage = userStorage
+    }
 }
 
 extension Storage {
