@@ -18,6 +18,11 @@
 		A1AAE48E29D77E9500ED9E80 /* MetamorphosisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AAE48D29D77E9500ED9E80 /* MetamorphosisApp.swift */; };
 		A1AAE49229D77E9700ED9E80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1AAE49129D77E9700ED9E80 /* Assets.xcassets */; };
 		A1AAE49529D77E9700ED9E80 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1AAE49429D77E9700ED9E80 /* Preview Assets.xcassets */; };
+		A1B4454929E8A2D100BF7BCF /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B4454829E8A2D100BF7BCF /* Storable.swift */; };
+		A1B4454B29E8A2E400BF7BCF /* UserDefaultsStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B4454A29E8A2E400BF7BCF /* UserDefaultsStorable.swift */; };
+		A1B4454E29E8A36E00BF7BCF /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B4454D29E8A36E00BF7BCF /* UserStorage.swift */; };
+		A1B4455029E8A3BD00BF7BCF /* UserStorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B4454F29E8A3BD00BF7BCF /* UserStorageImpl.swift */; };
+		A1B4455229E8A43B00BF7BCF /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B4455129E8A43B00BF7BCF /* Storage.swift */; };
 		A1B4469229D8A63A000D7E26 /* run-swiftgen.sh in Resources */ = {isa = PBXBuildFile; fileRef = A1B4469029D8A63A000D7E26 /* run-swiftgen.sh */; };
 		A1B4469329D8A63A000D7E26 /* run-swiftlint.sh in Resources */ = {isa = PBXBuildFile; fileRef = A1B4469129D8A63A000D7E26 /* run-swiftlint.sh */; };
 		A1B4469D29D8A6C6000D7E26 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1B4469F29D8A6C6000D7E26 /* Localizable.strings */; };
@@ -45,6 +50,11 @@
 		A1AAE48D29D77E9500ED9E80 /* MetamorphosisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetamorphosisApp.swift; sourceTree = "<group>"; };
 		A1AAE49129D77E9700ED9E80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1AAE49429D77E9700ED9E80 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A1B4454829E8A2D100BF7BCF /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
+		A1B4454A29E8A2E400BF7BCF /* UserDefaultsStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorable.swift; sourceTree = "<group>"; };
+		A1B4454D29E8A36E00BF7BCF /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
+		A1B4454F29E8A3BD00BF7BCF /* UserStorageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorageImpl.swift; sourceTree = "<group>"; };
+		A1B4455129E8A43B00BF7BCF /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		A1B4469029D8A63A000D7E26 /* run-swiftgen.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "run-swiftgen.sh"; sourceTree = "<group>"; };
 		A1B4469129D8A63A000D7E26 /* run-swiftlint.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "run-swiftlint.sh"; sourceTree = "<group>"; };
 		A1B4469E29D8A6C6000D7E26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -163,6 +173,42 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		A1B4454729E8A2A600BF7BCF /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				A1B4455429E8A90200BF7BCF /* Storable */,
+				A1B4455129E8A43B00BF7BCF /* Storage.swift */,
+				A1B4455329E8A85F00BF7BCF /* UserStorage */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		A1B4455329E8A85F00BF7BCF /* UserStorage */ = {
+			isa = PBXGroup;
+			children = (
+				A1B4454D29E8A36E00BF7BCF /* UserStorage.swift */,
+				A1B4454F29E8A3BD00BF7BCF /* UserStorageImpl.swift */,
+			);
+			path = UserStorage;
+			sourceTree = "<group>";
+		};
+		A1B4455429E8A90200BF7BCF /* Storable */ = {
+			isa = PBXGroup;
+			children = (
+				A1B4454829E8A2D100BF7BCF /* Storable.swift */,
+				A1B4455529E8A95500BF7BCF /* UserDefaults */,
+			);
+			path = Storable;
+			sourceTree = "<group>";
+		};
+		A1B4455529E8A95500BF7BCF /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				A1B4454A29E8A2E400BF7BCF /* UserDefaultsStorable.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
 		A1B4468E29D8A61B000D7E26 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +296,7 @@
 			children = (
 				A1353C0929DCE71100A56D55 /* Extensions */,
 				A10B43BE29E31D690029A609 /* Models */,
+				A1B4454729E8A2A600BF7BCF /* Storage */,
 				A10B43C129E31D830029A609 /* Views */,
 			);
 			path = Common;
@@ -423,14 +470,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B4454B29E8A2E400BF7BCF /* UserDefaultsStorable.swift in Sources */,
 				A10B43BB29E2F2630029A609 /* ButtonStyles.swift in Sources */,
+				A1B4455029E8A3BD00BF7BCF /* UserStorageImpl.swift in Sources */,
+				A1B4455229E8A43B00BF7BCF /* Storage.swift in Sources */,
 				A1AAE48E29D77E9500ED9E80 /* MetamorphosisApp.swift in Sources */,
 				A1B446AA29D8A8B8000D7E26 /* Strings.swift in Sources */,
 				A1C7200B29DB50B9003BDBA2 /* AppState.swift in Sources */,
 				A1B446A929D8A8B8000D7E26 /* Assets.swift in Sources */,
 				A1353C0B29DCE72900A56D55 /* View+NavigationBarColor.swift in Sources */,
+				A1B4454929E8A2D100BF7BCF /* Storable.swift in Sources */,
 				A1DA6B5D29DF72CD008A5E66 /* WeightView.swift in Sources */,
 				A1C29E7629DB4BC900D0069B /* NavigationType.swift in Sources */,
+				A1B4454E29E8A36E00BF7BCF /* UserStorage.swift in Sources */,
 				A1353C0D29DCE96C00A56D55 /* View+Backgrounds.swift in Sources */,
 				A1DA6B5E29DF72CD008A5E66 /* WeightViewModel.swift in Sources */,
 				A10B43BD29E311780029A609 /* FrameReader.swift in Sources */,
