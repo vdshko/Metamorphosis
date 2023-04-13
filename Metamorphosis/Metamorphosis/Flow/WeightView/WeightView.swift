@@ -68,7 +68,7 @@ struct WeightView: View {
             toggleMeasurement()
         } label: {
             HStack {
-                Text(viewModel.selectedMeasurement2)
+                Text(viewModel.selectedMeasurement)
                 Spacer()
                 Image(systemName: "chevron.right")
                     .rotationEffect(.degrees(isExpanded ? 90.0 : 0.0))
@@ -89,7 +89,7 @@ struct WeightView: View {
         DisclosureGroup("", isExpanded: $isExpanded) { [weak viewModel] in
             ScrollView {
                 LazyVStack(spacing: 0.0) {
-                    ForEach(viewModel?.selectableMeasurements2 ?? [], id: \.self) {
+                    ForEach(viewModel?.selectableMeasurements ?? [], id: \.self) {
                         selectorListCell(measurement: $0)
                     }
                 }
@@ -103,7 +103,7 @@ struct WeightView: View {
         .offset(y: inputViewFrame.height - Constants.paddingTopContainer)
     }
     
-    private func selectorListCell(measurement: WeightMeasurement2) -> some View {
+    private func selectorListCell(measurement: WeightMeasurement) -> some View {
         HStack {
             Text(measurement.type)
             Spacer()
@@ -111,7 +111,7 @@ struct WeightView: View {
         .frame(height: 50.0)
         .background(.secondary)
         .onTapGesture { [weak viewModel] in
-            viewModel?.selectedMeasurement2 = measurement.type
+            viewModel?.selectedMeasurement = measurement.type
             toggleMeasurement()
         }
     }
@@ -127,7 +127,7 @@ struct WeightView: View {
     
     private var conversionsList: some View {
         List {
-            ForEach(viewModel.selectableMeasurements2, id: \.self) {
+            ForEach(viewModel.selectableMeasurements, id: \.self) {
                 conversionListCell(measurement: $0)
             }
             .listRowBackground(EmptyView().background(.main))
@@ -143,14 +143,14 @@ struct WeightView: View {
         }
     }
     
-    private func conversionListCell(measurement: WeightMeasurement2) -> some View {
+    private func conversionListCell(measurement: WeightMeasurement) -> some View {
         HStack {
             Spacer(minLength: 0.0)
             Text(String(format: "%.5f", measurement.value))
                 .lineLimit(1)
                 .padding(.horizontal, 10.0)
                 .onLongPressGesture { [weak viewModel] in
-                    viewModel?.handleLongPress2(for: measurement)
+                    viewModel?.handleLongPress(for: measurement)
                 }
             Text(measurement.type)
                 .padding(.horizontal, 10.0)
