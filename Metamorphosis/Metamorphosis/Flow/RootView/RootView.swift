@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RootView: View {
     
-    @StateObject var viewModel: RootViewModel = RootViewModel()
+    @StateObject var viewModel: RootViewModel
     
     var body: some View {
         NavigationStack(path: $viewModel.navigationPath) {
@@ -18,7 +18,7 @@ struct RootView: View {
                 .navigationBarTitleDisplayMode(.large)
                 .navigationDestination(for: NavigationType.self) { type in
                     switch type {
-                    case .weight: WeightView()
+                    case .weight: WeightView(viewModel: viewModel.weightViewModel())
                     default: Text(L10n.Common.comingSoon)
                     }
                 }
@@ -64,6 +64,6 @@ struct RootView: View {
 struct RootView_Previews: PreviewProvider {
     
     static var previews: some View {
-        RootView()
+        RootView(viewModel: .init(diContainer: .preview))
     }
 }

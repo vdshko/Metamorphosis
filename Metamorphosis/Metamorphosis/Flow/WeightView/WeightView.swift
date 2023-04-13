@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WeightView: View {
     
-    @StateObject var viewModel: WeightViewModel = WeightViewModel()
+    @StateObject var viewModel: WeightViewModel
     
     var body: some View {
         VStack {
@@ -173,6 +173,6 @@ private extension WeightView {
 struct WeightView_Previews: PreviewProvider {
     
     static var previews: some View {
-        WeightView()
+        WeightView(viewModel: .init(diContainer: .preview))
     }
 }

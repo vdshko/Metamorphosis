@@ -14,13 +14,20 @@ extension RootView {
         @Published var navigationPath: NavigationPath = NavigationPath()
         @Published private(set) var units: [Unit] = []
         
-        init() {
+        private let diContainer: DIContainer
+        
+        init(diContainer: DIContainer) {
+            self.diContainer = diContainer
             setupBinding()
             setupUnits()
         }
         
         func handleCellTap(for unit: Unit) {
-            AppState.shared.navigationPath.append(unit.navigationType)
+            diContainer.appState.navigationPath.append(unit.navigationType)
+        }
+        
+        func weightViewModel() -> WeightView.WeightViewModel {
+            return WeightView.WeightViewModel(diContainer: diContainer)
         }
     }
 }
@@ -29,8 +36,8 @@ private extension RootView.RootViewModel {
     
     func setupBinding() {
         $navigationPath
-            .assign(to: &AppState.shared.$navigationPath)
-        AppState.shared.$navigationPath
+            .assign(to: &diContainer.appState.$navigationPath)
+        diContainer.appState.$navigationPath
             .removeDuplicates()
             .assign(to: &$navigationPath)
     }
