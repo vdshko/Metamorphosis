@@ -9,5 +9,6 @@ import Foundation
 
 final class UserStorageMock: UserStorage {
     
-    var weightMeasurements: [String: Double]?
+    var measurementMultiplierToMG: [String: Double]?
+    var measurementMultiplierFromMG: [String: Double]?
 }

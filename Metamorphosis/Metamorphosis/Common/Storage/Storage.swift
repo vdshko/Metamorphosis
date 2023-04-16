@@ -32,6 +32,7 @@ extension Storage {
     
     enum Key: String, CaseIterable {
         
-        case weightMeasurements
+        case measurementMultiplierToMG
+        case measurementMultiplierFromMG
     }
 }

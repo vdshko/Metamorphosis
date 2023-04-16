@@ -11,15 +11,30 @@ final class UserStorageImpl: UserStorage {
     
     let userDefaults: Storable
     
-    var weightMeasurements: [String: Double]? {
+    // MARK: - WeightViewModel
+    
+    var measurementMultiplierToMG: [String: Double]? {
         get {
-            userDefaults.get(for: .weightMeasurements)
+            userDefaults.get(for: .measurementMultiplierToMG)
         }
         set {
             if let value = newValue {
-                userDefaults.set(value: value, for: .weightMeasurements)
+                userDefaults.set(value: value, for: .measurementMultiplierToMG)
             } else {
-                userDefaults.delete(for: .weightMeasurements)
+                userDefaults.delete(for: .measurementMultiplierToMG)
+            }
+        }
+    }
+    
+    var measurementMultiplierFromMG: [String: Double]? {
+        get {
+            userDefaults.get(for: .measurementMultiplierFromMG)
+        }
+        set {
+            if let value = newValue {
+                userDefaults.set(value: value, for: .measurementMultiplierFromMG)
+            } else {
+                userDefaults.delete(for: .measurementMultiplierFromMG)
             }
         }
     }
