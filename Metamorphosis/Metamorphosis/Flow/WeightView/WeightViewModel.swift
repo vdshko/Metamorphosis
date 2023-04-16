@@ -20,9 +20,6 @@ extension WeightView {
         @Published var inputValue: Double?
         @Published var selectedMeasurement: String = ""
         @Published var selectableMeasurements: [WeightMeasurement] = []
-
-        private var measurementMultiplierToMG: [String: Double] = [:]
-        private var measurementMultiplierFromMG: [String: Double] = [:]
         
         private let diContainer: DIContainer
 
@@ -69,9 +66,7 @@ private extension WeightView.WeightViewModel {
                 "pound": 0.000_002_204_6
             ]
         }
-        measurementMultiplierToMG = diContainer.storage.userStorage.measurementMultiplierToMG!
-        measurementMultiplierFromMG = diContainer.storage.userStorage.measurementMultiplierFromMG!
-        selectedMeasurement = measurementMultiplierToMG.first?.key ?? ""
+        selectedMeasurement = diContainer.storage.userStorage.measurementMultiplierToMG?.first?.key ?? ""
     }
     
     func setupBinding() {
@@ -85,6 +80,8 @@ private extension WeightView.WeightViewModel {
     }
     
     func conversionList(for value: Double?, and selectedType: String) -> [WeightView.WeightMeasurement] {
+        guard let measurementMultiplierToMG: [String: Double] = diContainer.storage.userStorage.measurementMultiplierToMG,
+              let measurementMultiplierFromMG: [String: Double] = diContainer.storage.userStorage.measurementMultiplierFromMG else { return [] }
         return measurementMultiplierToMG
             .compactMap { type in
                 guard type.key != selectedType else { return nil }
