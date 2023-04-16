@@ -9,5 +9,6 @@ import Foundation
 
 protocol UserStorage: AnyObject {
     
-    var weightMeasurements: [String: Double]? { get set }
+    var measurementMultiplierToMG: [String: Double]? { get set }
+    var measurementMultiplierFromMG: [String: Double]? { get set }
 }

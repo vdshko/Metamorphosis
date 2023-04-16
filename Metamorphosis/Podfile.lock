@@ -1,5 +1,5 @@
 PODS:
-  - DebugFrame (0.1.4)
+  - DebugFrame (0.1.5)
   - SwiftGen (6.5.1)
   - SwiftLint (0.48.0)
 
@@ -15,7 +15,7 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
-  DebugFrame: bfa048940cf8d3aa3497d4ff1ef3512151b7ee33
+  DebugFrame: 91b1836b92141f2cce8f125d1e930126f21530f4
   SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
   SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
 

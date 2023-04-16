@@ -41,31 +41,37 @@ extension WeightView {
 private extension WeightView.WeightViewModel {
     
     func setupDefaultValues() {
-        selectedMeasurement = "kg"
-        measurementMultiplierToMG = [
-            "mg": 1.0,
-            "cg": 10.0,
-            "dg": 100.0,
-            "g": 1_000.0,
-            "dag": 10_000.0,
-            "kg": 1_000_000.0,
-            "q": 100_000_000.0,
-            "t": 1_000_000_000.0,
-            "Oz": 31_103.4768,
-            "pound": 453_592.0
-        ]
-        measurementMultiplierFromMG = [
-            "mg": 1.0,
-            "cg": 0.1,
-            "dg": 0.01,
-            "g": 0.001,
-            "dag": 0.000_1,
-            "kg": 0.000_001,
-            "q": 0.000_000_01,
-            "t": 0.000_000_001,
-            "Oz": 0.000_035_274,
-            "pound": 0.000_002_204_6
-        ]
+        if diContainer.storage.userStorage.measurementMultiplierToMG == nil {
+            diContainer.storage.userStorage.measurementMultiplierToMG = [
+                "mg": 1.0,
+                "cg": 10.0,
+                "dg": 100.0,
+                "g": 1_000.0,
+                "dag": 10_000.0,
+                "kg": 1_000_000.0,
+                "q": 100_000_000.0,
+                "t": 1_000_000_000.0,
+                "Oz": 31_103.4768,
+                "pound": 453_592.0
+            ]
+        }
+        if diContainer.storage.userStorage.measurementMultiplierFromMG == nil {
+            diContainer.storage.userStorage.measurementMultiplierFromMG = [
+                "mg": 1.0,
+                "cg": 0.1,
+                "dg": 0.01,
+                "g": 0.001,
+                "dag": 0.000_1,
+                "kg": 0.000_001,
+                "q": 0.000_000_01,
+                "t": 0.000_000_001,
+                "Oz": 0.000_035_274,
+                "pound": 0.000_002_204_6
+            ]
+        }
+        measurementMultiplierToMG = diContainer.storage.userStorage.measurementMultiplierToMG!
+        measurementMultiplierFromMG = diContainer.storage.userStorage.measurementMultiplierFromMG!
+        selectedMeasurement = measurementMultiplierToMG.first?.key ?? ""
     }
     
     func setupBinding() {
